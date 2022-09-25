@@ -1,4 +1,4 @@
-package de.berlin.htw;
+package de.berlin.htw.boundary;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
