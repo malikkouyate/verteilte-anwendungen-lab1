@@ -26,7 +26,7 @@ class ProtectedResourceTest {
           .log().all()
           .contentType(MediaType.TEXT_PLAIN)
           .header("X-User-Name", "Max Mustermann")
-          .header("X-User-Role", "User")
+          .header("X-User-Role", "ADMIN")
           .body("don't forget to learn")
           .post("/protected")
           .then()
