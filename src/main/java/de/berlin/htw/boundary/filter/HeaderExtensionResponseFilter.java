@@ -9,6 +9,9 @@ import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.ext.Provider;
 
+/**
+ * @author Alexander Stanik [stanik@htw-berlin.de]
+ */
 @Provider
 @Priority(Priorities.HEADER_DECORATOR + 1)
 public class HeaderExtensionResponseFilter implements ContainerResponseFilter {

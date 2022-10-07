@@ -9,12 +9,21 @@ import java.util.zip.GZIPOutputStream;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import org.jboss.logging.Logger;
 
 import de.berlin.htw.control.qualifier.GZipped;
 
+/**
+ * @author Alexander Stanik [stanik@htw-berlin.de]
+ */
 @Singleton
 public class GZippedFileStreamProducer {
+
+    @Inject
+    Logger logger;
 
     @GZipped
     @Produces
@@ -25,13 +34,14 @@ public class GZippedFileStreamProducer {
     private GZIPOutputStream stream;
 
     @PostConstruct
-    private void openStream() throws IOException {
+    void openStream() throws IOException {
         Path temp = Files.createTempFile("va", ".gz");
+        logger.info("Writing plain text to " + temp);
         stream = new GZIPOutputStream(Files.newOutputStream(temp));
     }
 
     @PreDestroy
-    private void closeStream() throws IOException {
+    void closeStream() throws IOException {
         stream.close();
     }
 }

@@ -5,6 +5,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+/**
+ * @author Alexander Stanik [stanik@htw-berlin.de]
+ */
 @Path("/hello")
 public class GreetingResource {
 

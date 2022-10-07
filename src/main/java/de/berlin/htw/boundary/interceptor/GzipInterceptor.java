@@ -12,6 +12,9 @@ import javax.ws.rs.ext.ReaderInterceptorContext;
 import javax.ws.rs.ext.WriterInterceptor;
 import javax.ws.rs.ext.WriterInterceptorContext;
 
+/**
+ * @author Alexander Stanik [stanik@htw-berlin.de]
+ */
 @Provider
 public class GzipInterceptor implements ReaderInterceptor, WriterInterceptor {
 
@@ -19,6 +22,7 @@ public class GzipInterceptor implements ReaderInterceptor, WriterInterceptor {
     public void aroundWriteTo(WriterInterceptorContext context)
             throws IOException, WebApplicationException {
         // do nothing
+        context.proceed();
     }
 
     @Override

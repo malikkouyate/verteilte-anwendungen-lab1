@@ -12,10 +12,13 @@ class GreetingResourceTest {
     @Test
     void testHelloEndpoint() {
         given()
-          .when().get("/hello")
-          .then()
-             .statusCode(200)
-             .body(is("Hello RESTEasy"));
+            .when()
+            .log().all()
+            .get("/hello")
+            .then()
+            .log().all()
+            .statusCode(200)
+            .body(is("Hello RESTEasy"));
     }
 
 }

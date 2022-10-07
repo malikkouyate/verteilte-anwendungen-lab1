@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
+import javax.ws.rs.core.MediaType;
+
 @QuarkusTest
 class ProtectedResourceTest {
 
@@ -14,6 +16,22 @@ class ProtectedResourceTest {
           .when().get("/protected")
           .then()
              .statusCode(401)
+             .header("X-My-Header", "Filter was executed");
+    }
+
+    @Test
+    void testReminderEndpoint() {
+        given()
+          .when()
+          .log().all()
+          .contentType(MediaType.TEXT_PLAIN)
+          .header("X-User-Name", "Max Mustermann")
+          .header("X-User-Role", "User")
+          .body("don't forget to learn")
+          .post("/protected")
+          .then()
+          .log().all()
+             .statusCode(204)
              .header("X-My-Header", "Filter was executed");
     }
 

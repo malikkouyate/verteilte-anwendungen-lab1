@@ -10,6 +10,9 @@ import javax.ws.rs.ext.Provider;
 
 import org.jboss.logging.Logger;
 
+/**
+ * @author Alexander Stanik [stanik@htw-berlin.de]
+ */
 @Provider
 @PreMatching
 public class LoggingRequestFilter implements ContainerRequestFilter {
